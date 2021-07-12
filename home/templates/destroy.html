@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete A Course</title>
+</head>
+
+<body>
+    <div class="container-fluid" id="delete_prompt">
+        <h3>Are you sure you want to <em><span>delete</span></em> the following course?</h3>
+        <p>Course Name: {{course.course_name}}</p>
+        <br>
+        <p>Description: {{course.description}}</p>
+
+        <form action="/courses/{{course.id}}/delete" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">YES! I want to delete this</button>
+            <a class="btn btn-secondary" href="/">No</a>
+        </form>
+    </div>
+</body>
+
+</html>
